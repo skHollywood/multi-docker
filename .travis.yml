@@ -10,16 +10,16 @@ script:
   - docker run -e -CI=true siva/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t siva/multi-client ./client
-  - docker build -t siva/multi-nginx ./nginx
-  - docker build -t siva/multi-server ./server
-  - docker build -t siva/multi-worker ./worker
+  - docker build -t nsksivadocker/multi-client ./client
+  - docker build -t nsksivadocker/multi-nginx ./nginx
+  - docker build -t nsksivadocker/multi-server ./server
+  - docker build -t nsksivadocker/multi-worker ./worker
 #login to docker cli
   - echo "$DOCKER_PASSWD" | docker login -u "$DOCKER_ID" --password-stdin
 
 
 # push images to docker hub
-  - docker push siva/multi-client
-  - docker push siva/multi-nginx
-  - docker push siva/multi-server
-  - docker push siva/multi-worker
+  - docker push nsksivadocker/multi-client
+  - docker push nsksivadocker/multi-nginx
+  - docker push nsksivadocker/multi-server
+  - docker push nsksivadocker/multi-worker
